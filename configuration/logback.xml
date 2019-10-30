@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_PATH" value="./logs"/>
+    <property name="LOG_FILE_NAME" value="application"/>
+
+<!--    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>${LOG_PATH}/${LOG_FILE_NAME}.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            &lt;!&ndash; daily rollover &ndash;&gt;-->
+<!--            <fileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            &lt;!&ndash; each file should be at most 100MB &ndash;&gt;-->
+<!--            <maxFileSize>100MB</maxFileSize>-->
+<!--            &lt;!&ndash; keep 5 days' worth of history &ndash;&gt;-->
+<!--            <maxHistory>5</maxHistory>-->
+<!--            &lt;!&ndash; keep 512MB of total history &ndash;&gt;-->
+<!--            <totalSizeCap>1GB</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <charset>UTF-8</charset>-->
+<!--            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %level %logger [%file:%line] %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%level) %cyan(%logger{15}) [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.github.crowler" level="DEBUG" />
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
